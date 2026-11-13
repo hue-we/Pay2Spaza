@@ -8,14 +8,14 @@ export type Signable = {
   currency: string; channel: string; nonce: string; offline: boolean; createdAt: string;
 };
 
-<<<<<<< HEAD
+
 async function keypair() {
   const stored = await KeyStore.getItem('p2s_secret');
   if (stored) return nacl.sign.keyPair.fromSecretKey(util.decodeBase64(stored));
   const kp = nacl.sign.keyPair();
   await KeyStore.setItem('p2s_secret', util.encodeBase64(kp.secretKey));
   return kp;
-=======
+
 // Must match canonical() in backend/src/security/signature.js exactly, field for field.
 export const canonical = (t: Signable) =>
   [t.transactionId, t.merchantId, t.customerId, t.deviceId, t.amount, t.currency, t.channel, t.nonce, t.offline, t.createdAt].join('|');
