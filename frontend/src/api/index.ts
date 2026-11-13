@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 import { mockApi } from './mock';
-=======
-<<<<<<< HEAD
+
 import { mockApi } from './mock';
 import { Merchant, ShopTx, SyncResult, WalletInfo } from './types';
 import { cacheMerchant, getCachedMerchant, Tx } from '../database/db';
@@ -10,16 +8,16 @@ import { cacheMerchant, getCachedMerchant, Tx } from '../database/db';
 // Android emulator -> host is http://10.0.2.2:3000; a real phone needs your PC's LAN IP.
 export const USE_MOCK = true;
 export const BASE_URL = 'http://10.0.2.2:3000';
-=======
+
  import { mockApi } from './mock';
->>>>>>> main
+
 import { Merchant, SyncResult } from './types';
 import { cacheMerchant, getCachedMerchant, Tx } from '../database/db';
 
 // Local development backend.
 export const USE_MOCK = false;
 const BASE_URL = 'https://pay2spaza.onrender.com/';
->>>>>>> b95cb82a0c8fd38a98f6a37615a3169c8c81b0b9
+
 
 // Contract: responses look like { success, data, error }. Returns null on any failure.
 async function call<T>(path: string, init?: RequestInit): Promise<T | null> {
@@ -37,7 +35,7 @@ const realApi = {
   topUpWallet: (customerId: string, amount: number, publicKey: string) =>
     call<WalletInfo>('/api/wallet/topup', { method: 'POST', body: JSON.stringify({ customerId, amount, publicKey }) }),
   lookupMerchant: async (id: string): Promise<Merchant | null> => {
-<<<<<<< HEAD
+
     const m = await call<Merchant>(`api/merchants/${encodeURIComponent(id)}`);
     if (m) { cacheMerchant(m).catch(() => {}); return m; }
     return getCachedMerchant(id); // offline or unreachable: use the saved copy
@@ -49,7 +47,7 @@ const realApi = {
       body: JSON.stringify({ transactions: list }),
     });
     return Array.isArray(results) ? results : [];
-=======
+
     const m = await call<Merchant>(`/api/merchants/${encodeURIComponent(id)}`);
     if (m) { cacheMerchant(m).catch(() => {}); return m; }
     return getCachedMerchant(id); // offline or unreachable: use the saved copy
@@ -64,7 +62,7 @@ const realApi = {
       transactionId: String(x.transactionId), amount: Number(x.amount), createdAt: String(x.createdAt),
       channel: String(x.channel ?? 'QR'), status: x.status ?? 'CONFIRMED',
     }));
->>>>>>> main
+
   },
 };
 
