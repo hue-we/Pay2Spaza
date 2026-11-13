@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 import * as SQLite from 'expo-sqlite';
 import type { Merchant } from '../api/types';
 
 import type { Tx } from './types';
 export type { Tx } from './types';
-=======
+
 import { Platform } from 'react-native';
 
 export type Tx = {
@@ -22,7 +21,7 @@ export type Tx = {
   publicKey: string;
   status: 'LOCAL_PENDING' | 'SUBMITTED' | 'CONFIRMED' | 'REJECTED' | 'EXPIRED';
 };
->>>>>>> main
+
 
 // In-memory array storage fallback to hold data on the web
 let webDbMemory: any[] = [];
